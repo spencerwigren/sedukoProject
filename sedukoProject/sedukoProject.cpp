@@ -1,20 +1,58 @@
-// sedukoProject.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
+using namespace std;
+
+
+class SedukoGame {
+public:
+
+    void displayBoard(int board[9][9], int width, int height) {
+
+        for (int i = 0; i < height; ++i)
+        {
+            for (int j = 0; j < width; ++j)
+            {
+                cout << board[i][j] << ' ';
+            }
+            cout << endl;
+        }
+        cout << endl;
+    }
+
+
+    void showOptions() {
+        cout << "Show Instructions Again: S\n";
+        cout << "Display Board: D\n";
+        cout << "Edit Board: E\n";
+        cout << "End Game: G\n\n";
+    }
+};
+
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    int board[9][9] = {
+        {5,3,0,0,7,0,0,0,0},
+        {6,0,0,1,9,5,0,0,0},
+        {0,9,8,0,0,0,0,6,0},
+        {8,0,0,0,6,0,0,0,3},
+        {4,0,0,8,0,3,0,0,1},
+        {7,0,0,0,2,0,0,0,6},
+        {0,6,0,0,0,0,2,8,0},
+        {0,0,0,4,1,9,0,0,5},
+        {0,0,0,0,8,0,0,7,9}
+    };
+    int width = 9, height = 9;
+
+
+    SedukoGame sedukoObj; // Create an object for SedukoGame
+
+    sedukoObj.showOptions();
+    sedukoObj.displayBoard(board, width, height);
+
+
+    //displayBoard(board, width, height);
+
+
+
+    return 0;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
