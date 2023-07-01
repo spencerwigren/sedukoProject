@@ -1,10 +1,15 @@
 #include <iostream>
 #include <string>
+#include <fstream>
 using namespace std;
 
 
 class SedukoGame {
 public:
+
+    void readFile() {
+
+    }
 
 
     void displayBoard(int board[9][9], int width, int height) {
@@ -12,7 +17,6 @@ public:
         int count = 1;
         int SideNumber = 2;
         string BoardSectionDivisor = "  -+-+-+-+-+-+-+-+-\n";
-
 
         cout << "  1 2 3 4 5 6 7 8 9\n1 ";
 
@@ -40,6 +44,31 @@ public:
             }
         }
         cout << endl;
+    }
+
+    void editCell(int board[9][9], int width, int height) {
+
+        string col;
+        cout << "What column would you like to edit: ";
+        cin >> col;
+
+        string row;
+        cout << "What row would you like to edit: ";
+        cin >> row;
+
+        cout << "Editing Cells " << col << " " << row << endl;
+
+        string value;
+        cout << "New Value: ";
+        cin >> value;
+
+        int editCol = stoi(col) - 1;
+        int editRow = stoi(row) - 1;
+        int newValue = stoi(value);
+
+        board[editRow][editCol] = newValue;
+
+        displayBoard(board, width, height);
     }
 
 
@@ -73,8 +102,7 @@ public:
                 displayBoard(board, width, height);
                 break;
             case 3:
-                //editBoard();
-                cout << "Edit Board\n";
+                editCell(board, width, height);
                 break;
             case 4:
                 cout << "END GAME!\n";
