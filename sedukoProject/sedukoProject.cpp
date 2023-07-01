@@ -1,29 +1,87 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
 
 class SedukoGame {
 public:
 
+
     void displayBoard(int board[9][9], int width, int height) {
+
+        int count = 1;
+        int SideNumber = 2;
+        string BoardSectionDivisor = "  -+-+-+-+-+-+-+-+-\n";
+
+
+        cout << "  1 2 3 4 5 6 7 8 9\n1 ";
 
         for (int i = 0; i < height; ++i)
         {
             for (int j = 0; j < width; ++j)
             {
-                cout << board[i][j] << ' ';
+                if (board[i][j] == 0) {
+                    cout << " ";
+                }
+                else {
+                    cout << board[i][j];
+                }
+
+                if (count % 9 == 0) {
+                    cout << endl;
+                    if (SideNumber < 10) {
+                        cout << BoardSectionDivisor << SideNumber++ << " ";
+                    }
+                }
+                else {
+                    cout << "|";
+                }
+                count++;
             }
-            cout << endl;
         }
         cout << endl;
     }
 
 
     void showOptions() {
-        cout << "Show Instructions Again: S\n";
-        cout << "Display Board: D\n";
-        cout << "Edit Board: E\n";
-        cout << "End Game: G\n\n";
+        cout << "Show Instructions Again: 1\n";
+        cout << "Display Board: 2\n";
+        cout << "Edit Board: 3\n";
+        cout << "End Game: 4\n\n";
+    }
+
+
+    int userInput() {
+
+        string input;
+        cout << "> ";
+        cin >> input;
+
+        int intInput = stoi(input);
+
+        return intInput;
+    }
+
+
+    void gameRunner(bool runGame, int board[9][9], int width, int height) {
+        while (runGame == true) {
+            switch (userInput()) {
+            case 1:
+                showOptions();
+                break;
+            case 2:
+                displayBoard(board, width, height);
+                break;
+            case 3:
+                //editBoard();
+                cout << "Edit Board\n";
+                break;
+            case 4:
+                cout << "END GAME!\n";
+                runGame = false;
+                break;
+            }
+        }
     }
 };
 
@@ -43,16 +101,13 @@ int main()
     };
     int width = 9, height = 9;
 
+    bool gameRun = true;
 
     SedukoGame sedukoObj; // Create an object for SedukoGame
 
     sedukoObj.showOptions();
     sedukoObj.displayBoard(board, width, height);
-
-
-    //displayBoard(board, width, height);
-
-
+    sedukoObj.gameRunner(gameRun, board, width, height);
 
     return 0;
 }
