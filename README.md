@@ -5,7 +5,7 @@ This project is to help me get an understanding of the c++ language
 The project is based off of the clasic seduko game.
 
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://youtu.be/7TkZhu0tMFY)
 
 # Development Environment
 
