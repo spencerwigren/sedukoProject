@@ -7,19 +7,16 @@ using namespace std;
 class SedukoGame {
 public:
 
-    void readFile() {
-
-    }
-
-
     void displayBoard(int board[9][9], int width, int height) {
 
+        // Board beautfuication process
         int count = 1;
         int SideNumber = 2;
-        string BoardSectionDivisor = "  -+-+-+-+-+-+-+-+-\n";
+        string BoardSectionDivisor = "  -+-+-|-+-+-|-+-+-\n";
 
         cout << "  1 2 3 4 5 6 7 8 9\n1 ";
 
+        // Displaying board
         for (int i = 0; i < height; ++i)
         {
             for (int j = 0; j < width; ++j)
@@ -48,24 +45,29 @@ public:
 
     void editCell(int board[9][9], int width, int height) {
 
+        // editing row
         string col;
         cout << "What column would you like to edit: ";
         cin >> col;
 
+        //editing col
         string row;
         cout << "What row would you like to edit: ";
         cin >> row;
 
         cout << "Editing Cells " << col << " " << row << endl;
 
+        // Getting new value for cell
         string value;
         cout << "New Value: ";
         cin >> value;
 
+        // setting correct col, row and value to an int
         int editCol = stoi(col) - 1;
         int editRow = stoi(row) - 1;
         int newValue = stoi(value);
 
+        // Putting the user new value for the cell into the board
         board[editRow][editCol] = newValue;
 
         displayBoard(board, width, height);
@@ -85,7 +87,8 @@ public:
         string input;
         cout << "> ";
         cin >> input;
-
+        
+        // changing string to int
         int intInput = stoi(input);
 
         return intInput;
@@ -93,6 +96,7 @@ public:
 
 
     void gameRunner(bool runGame, int board[9][9], int width, int height) {
+        // Contuinally getting input from the user
         while (runGame == true) {
             switch (userInput()) {
             case 1:
@@ -108,6 +112,8 @@ public:
                 cout << "END GAME!\n";
                 runGame = false;
                 break;
+            default:
+                cout << "Please ent a valid input\n";
             }
         }
     }
@@ -116,6 +122,7 @@ public:
 
 int main()
 {
+    // Creates a 2d array for the board
     int board[9][9] = {
         {5,3,0,0,7,0,0,0,0},
         {6,0,0,1,9,5,0,0,0},
@@ -127,12 +134,14 @@ int main()
         {0,0,0,4,1,9,0,0,5},
         {0,0,0,0,8,0,0,7,9}
     };
+    //setting var to the width and height of the board
     int width = 9, height = 9;
 
     bool gameRun = true;
 
     SedukoGame sedukoObj; // Create an object for SedukoGame
 
+    // start of game
     sedukoObj.showOptions();
     sedukoObj.displayBoard(board, width, height);
     sedukoObj.gameRunner(gameRun, board, width, height);
