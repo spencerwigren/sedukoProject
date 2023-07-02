@@ -9,7 +9,7 @@ The project is based off of the clasic seduko game.
 
 # Development Environment
 
-Visual Code
+Visual Studio
 
 C++
 
